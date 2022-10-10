@@ -6,4 +6,6 @@ r.post('/EmployeData', controller.EmployeData)
 
 r.post('/deparment', controller.deparment)
 
+r.get('/EmployeGetData', controller.EmployeGetData)
+
 module.exports = r;

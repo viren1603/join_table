@@ -1,4 +1,5 @@
 const { employe, deparment } = require('../model/model')
+const { all } = require('../routes/route')
 module.exports.EmployeData = async function (req, res) {
     try {
         // let id = req.body.id
@@ -16,7 +17,27 @@ module.exports.EmployeData = async function (req, res) {
         res.json({ try_catch: error.message })
     }
 }
+module.exports.EmployeGetData = async function (req, res) {
+    try {
+        //  console.log(employe.findAll());
+        let allData = await employe.findAll({
+            include: [
+                {
+                    model: deparment,
+                },
 
+
+            ]
+        });
+        //  res.json({ "messj": employe })
+        console.log(allData);
+        res.json({ "data": allData })
+
+    }
+    catch (error) {
+        res.json({ "messj": error })
+    }
+}
 module.exports.deparment = async function (req, res) {
     try {
         // let id = req.body.id
